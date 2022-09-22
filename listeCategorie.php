@@ -10,15 +10,31 @@ $table = $reqBDD->fetchAll(); //Je transforme le résultat de la requête en tab
 
 if(count($table) > 0) {
     // On affiche chaque entrée une à une :
+    echo "<table>";
+
     foreach ($table as $ligne) {
         //foreach : parcourir pour chaque composant d'un ensemble
         //ensemble : $table
         // composant ? => ligne de la table que j'ai appelé $ligne...
-        echo "<a href='afficher1Categorie.php?id=$ligne[id]'> 
-            $ligne[nom] 
-            $ligne[description] 
-            </a><br>"; // Pour chaque entrée, j'affiche la dénominiation dans un lien ouvrant la liste des informations de l'entreprise
+        echo " 
+ <tr>
+           <td> $ligne[nom] </td>
+            <td>$ligne[description]</td>
+           <td>
+            <form action='afficher1Categorie.php'>
+                <input type='hidden' name='id' value='$ligne[id]'>
+                <input type='submit' name='btn' value='Voir'>
+            </form> 
+            </td>
+             <td>
+            <form action='supprimerCategorie.php'>
+                <input type='hidden' name='id' value='$ligne[id]'>
+                <input type='submit' name='btn' value='Supp'>
+            </form> 
+            </td>
+            </tr>"; // Pour chaque entrée, j'affiche la dénominiation dans un lien ouvrant la liste des informations de l'entreprise
     }
+    echo "</table>";
     /*
     for($i=0; $i< count($table); $i++)
     {
