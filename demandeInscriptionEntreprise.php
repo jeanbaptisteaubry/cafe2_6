@@ -11,7 +11,7 @@
             Adresse <input type="text" name="Adresse"><br>
             CP <input type="text" name="CP"><br>
             Ville <input type="text" name="Ville"><br>
-            Mail contact <input type="text" name="mailContact"><br>
+            Mail contact <input type="email" name="mailContact"><br>
             <input type="submit" name="button_envoyer" value ="Envoyer">
         </form>
     </body>
