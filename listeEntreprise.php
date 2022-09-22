@@ -11,18 +11,39 @@ $table = $reqBDD->fetchAll(); //Je transforme le résultat de la requête en tab
 //table => Les résultats de la requête sous la forme d'un tableau de tableau : tableau [Ligne][Colonne]
 //$count($table) => $count du nombre d'entrée dans $table[] donc le nombre de lignes !!
 //En sachant que la première ligne commence à 0 !
-var_dump($table);
+echo "<table border='1'>
+    <th>Raison sociale</th>
+    <th>Dénomination sociale</th>";
 if(count($table) > 0) {
     // On affiche chaque entrée une à une :
     foreach ($table as $ligne) {
+        echo "<tr>";
         //foreach : parcourir pour chaque composant d'un ensemble
         //ensemble : $table
         // composant ? => ligne de la table que j'ai appelé $ligne...
-        echo "<a href='afficher1Entreprise.php?id=$ligne[id]'> 
+        echo "
+            <td> 
             $ligne[raisonSociale] 
+             </td>
+               <td> 
             $ligne[denominationSociale] 
-            </a><br>"; // Pour chaque entrée, j'affiche la dénominiation dans un lien ouvrant la liste des informations de l'entreprise
+       
+            </td>
+            <td>
+             <form action='afficher1Entreprise.php' method='post'>
+                <input type='hidden' value='$ligne[id]' name='id'>
+                <input type='submit' value='Afficher'>
+             </form>
+             </td>
+              <td>
+            <form action='supprimerEntreprise.php' method='post'>
+                <input type='hidden' value='$ligne[id]' name='id'>
+                <input type='submit' value='Supp'>
+             </form>
+             </td>"; // Pour chaque entrée, j'affiche la dénominiation dans un lien ouvrant la liste des informations de l'entreprise
+        echo "<tr>";
     }
+    echo "</table>";
     /*
     for($i=0; $i< count($table); $i++)
     {
