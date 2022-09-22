@@ -1,5 +1,5 @@
 <?php
-
+//Association d'une variable PHP à chaque variable issue de la demande (REQUEST) Http
 $denominationSociale = $_REQUEST["denominationSociale"];
 $raisonSociale = $_REQUEST["raisonSociale"];
 $Adresse = $_REQUEST["Adresse"];
@@ -8,16 +8,17 @@ $Ville = $_REQUEST["Ville"];
 $mailContact = $_REQUEST["mailContact"];
 
 
-
 //Etablissement de la connexion à la base de données
 $bdd = new PDO('mysql:host=127.0.0.1;dbname=cafe2;charset=utf8', 'root', '');
 
-//Envoie d'une requête
-
+//Génération d'une requête SQL
 $reqTxt = "INSERT INTO `entreprise`
         ( `denominationSociale`, `raisonSociale`, `Adresse`, `CP`, `Ville`, `mailContact`) 
 VALUES  ( :denominationSociale, :raisonSociale, :Adresse, :CP, :Ville, :mailContact)";
-//echo "<br> $reqTxt <br>";
+
+//Préparation de la requête
+//=> Association d'une variable à chaque paramètre de la requête
+//Paramètre d'une requête ? champ changeant de valeur pour pas que la requête soit toujours identique
 $reqBDD = $bdd->prepare($reqTxt);
 $etat = $reqBDD->execute(array(
     'denominationSociale' => $denominationSociale,
@@ -27,6 +28,9 @@ $etat = $reqBDD->execute(array(
     'Ville' => $Ville,
     'mailContact' => $mailContact
 ));
+//$etat : variable stockant l'issue de la requête
+
+//Affichage du résultat de la requête :
 if ($etat) {
     echo " 
  Bonjour,

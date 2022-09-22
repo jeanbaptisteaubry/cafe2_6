@@ -5,6 +5,7 @@
         </title>
     </head>
     <body>
+        <H1>Demande d'inscription d'une entreprise</H1>
         <form action="reponseInscriptionEntreprise.php" method="GET">
             Dénomination sociale <input type="text" name="denominationSociale"><br>
             Raison sociale <input type="text" name="raisonSociale"><br>
