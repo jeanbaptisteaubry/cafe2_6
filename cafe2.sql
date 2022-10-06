@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 23 sep. 2022 à 11:35
+-- Généré le : jeu. 06 oct. 2022 à 15:09
 -- Version du serveur : 10.4.22-MariaDB
 -- Version de PHP : 8.1.2
 
@@ -128,6 +128,32 @@ INSERT INTO `entreprise` (`id`, `denominationSociale`, `raisonSociale`, `Adresse
                                                                                                                                                                                                                                       (30, 'A', 'A', 'A', 'A', 'A', 'A@A.COM', 'A', 'A', '2022-10-07', 'aerbv', '01', '2022-09-23'),
                                                                                                                                                                                                                                       (31, 'A', 'A', 'A', 'A', 'A', 'A@A.COM', 'A', 'A', '2022-10-07', 'aerbv', '01', '2022-09-23');
 
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `produit`
+--
+
+CREATE TABLE `produit` (
+                           `id` int(11) NOT NULL,
+                           `nom` text NOT NULL,
+                           `description` text NOT NULL,
+                           `PUHT` float NOT NULL,
+                           `TxTVA` float NOT NULL,
+                           `idCategorie` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Déchargement des données de la table `produit`
+--
+
+INSERT INTO `produit` (`id`, `nom`, `description`, `PUHT`, `TxTVA`, `idCategorie`) VALUES
+                                                                                       (1, 'Arabi millinium', 'Arabica 3000', 200, 0.2, 0),
+                                                                                       (2, 'Arabica', 'Arabica d\'Arabie', 20, 0, 3),
+(3, 'Arabica', 'Arabica d\'Arabie', 20, 0, 3),
+                                                                                       (4, 'Brésil', 'Du Brésil', 15, 0.021, 3),
+                                                                                       (5, 'Brésil', 'Du Brésil', 15, 0.021, 5);
+
 --
 -- Index pour les tables déchargées
 --
@@ -157,6 +183,12 @@ ALTER TABLE `entreprise`
     ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `produit`
+--
+ALTER TABLE `produit`
+    ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT pour les tables déchargées
 --
 
@@ -177,6 +209,12 @@ ALTER TABLE `centreinteret`
 --
 ALTER TABLE `entreprise`
     MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+
+--
+-- AUTO_INCREMENT pour la table `produit`
+--
+ALTER TABLE `produit`
+    MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
