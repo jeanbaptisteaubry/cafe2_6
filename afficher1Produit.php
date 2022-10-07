@@ -35,7 +35,8 @@ if(isset($_REQUEST["action"]))
 }
 //Création de la requête paramétrée
 $reqTxt = "
-SELECT produit.*, categorie.nom as nom_categorie, categorie.description as description_categorie
+SELECT produit.*, categorie.nom as nom_categorie,
+       categorie.description as description_categorie
 FROM produit, categorie
 where produit.idCategorie = categorie.id
 and produit.id = :id ";
